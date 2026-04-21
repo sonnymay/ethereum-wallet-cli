@@ -1,5 +1,6 @@
 import { useAccount, useBalance, useReadContract } from 'wagmi'
 import { formatUnits, erc20Abi } from 'viem'
+import { SkeletonCard } from './SkeletonCard'
 
 const USDC = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
 
@@ -21,9 +22,14 @@ export function WalletBalances() {
   })
 
   if (!isConnected || !address) {
+    return null
+  }
+
+  if (ethLoading || usdcLoading) {
     return (
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-        <p className="text-zinc-400">Connect MetaMask to view your wallet balances.</p>
+      <div className="grid gap-4 md:grid-cols-2">
+        <SkeletonCard />
+        <SkeletonCard />
       </div>
     )
   }
