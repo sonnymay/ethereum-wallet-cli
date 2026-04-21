@@ -2,6 +2,9 @@
   "name": "eth-basics",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "dev": "npm run dev --prefix my-web3-app"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-ignition": "^3.1.2",
     "@nomicfoundation/hardhat-toolbox-viem": "^5.0.4",
